@@ -16,7 +16,7 @@
     }
     ?>
     <br><br><br>
-    <!-- Tugas 2 membuat Output Tahun Kabisat -->
+    <!-- Tugas 2 Membuat Output Tahun Kabisat -->
     <?php
     $tahun = 2000;
     if ($tahun % 400 == 0) {
@@ -25,13 +25,28 @@
     elseif ($tahun % 100 == 0) {
         echo "Tahun $tahun bukanlah Tahun kabisat";
     }
-    elseif ($tahun % 4 == 0) {
+    else if ($tahun % 4 == 0) {
         echo "Tahun $tahun adalah Tahun Kabisat";
     }
     else{
         echo "Tahun $tahun bukanlah Tahun kabisat";
     }
     ?>
-
+    <br><br><br>
+    <!-- Tugas 3 Membuat Grade Nilai -->
+    <?php
+    $nilai = 87;
+    if($nilai <= 100 && $nilai >= 90){
+        echo "Nilai kamu $nilai Mendapatkan Grade A";
+    } else if ($nilai <= 89 && $nilai >= 80){
+        echo "Nilai kamu $nilai Mendapatkan Grade B";
+    } else if ($nilai <= 79 && $nilai >= 70){
+        echo "Nilai kamu $nilai Mendapatkan Grade C";
+    } else if ($nilai <= 69 && $nilai >= 60){
+        echo "Nilai kamu $nilai Mendapatkan Grade C";
+    } else {
+        echo "Nilai kamu $nilai Mendapatkan Grade D";
+    }
+    ?>
 </body>
 </html>
