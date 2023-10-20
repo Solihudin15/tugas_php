@@ -17,7 +17,7 @@
     <br><hr><br>
     <!-- Tugas Nomer 2 -->
     <table border="1">
-        <tr bgcolor="cyan">
+        <tr style="background-color: cyan;">
             <td>No</td>
             <td>Nama</td>
             <td>Kelas</td>
