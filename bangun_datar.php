@@ -10,7 +10,7 @@ echo "Rumus Luas Persegi : sisi x sisi <br>";
 echo "Luas dari Persegi yang memiliki $s cm adalah $luas";
 echo "<br><br><hr>";
 
-//                                 Menghitung persegi Panjang 
+//                                 Menghitung Luas persegi Panjang 
 echo "Menghitung Luas Persegi Panjang <br><br>";
 
 $p = 18;
