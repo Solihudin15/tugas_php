@@ -37,7 +37,6 @@
                 echo "<td>Kelas $a</td>";
             echo "</tr>";
             } else{
-
             echo"<tr style ='background-color: gray;'>";
                 echo"<td>$i</td>";
                 echo"<td>Nama ke $i</td>";
@@ -45,7 +44,7 @@
             echo "</tr>";
             }
         }
-            ?>
+        ?>
     </table>
 </body>
 </html>

@@ -43,9 +43,9 @@
     } else if ($nilai <= 79 && $nilai >= 70){
         echo "Nilai kamu $nilai Mendapatkan Grade C";
     } else if ($nilai <= 69 && $nilai >= 60){
-        echo "Nilai kamu $nilai Mendapatkan Grade C";
-    } else {
         echo "Nilai kamu $nilai Mendapatkan Grade D";
+    } else {
+        echo "Nilai kamu $nilai Mendapatkan Grade E";
     }
     ?>
 </body>
