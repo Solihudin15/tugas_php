@@ -9,7 +9,7 @@
     //                                   Menghitung Grade Nilai
     $nama = "Solihudin";
     $nilai = 85;
-
+    
     switch($nilai){
         case ($nilai >= 90 && $nilai <= 100):
             $grade = "A";
@@ -31,7 +31,7 @@
                 $keterangan = "Tidak Lulus";
                 break;
     }
-
+    
     echo "Hasil Studi mahasiswa<br>";
     echo "Nama Mahasiswa : $nama<br>";
     echo "Nilai Mahasiswa : $nilai<br>";

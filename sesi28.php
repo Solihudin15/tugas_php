@@ -52,7 +52,7 @@
         $tahun_lahir = date("Y", strtotime($ttl));
         $umur = $tahun_sekarang - $tahun_lahir;
         
-        //                           ---------- Mengubah Format Tahun-Bulan_hari ----------
+        //                           ---------- Mengubah Format Tahun-Bulan-hari ----------
         $newttl = date("d F Y", strtotime($ttl));
         
         //                               ---------- Konversi Nilai ke Grade ----------
