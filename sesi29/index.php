@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-$query = mysqli_query($connection, "SELECT * FROM anggota");
+$members = mysqli_query($connection, "SELECT * FROM anggota");
 ?>
 
 <html lang="en">
@@ -65,6 +65,7 @@ $query = mysqli_query($connection, "SELECT * FROM anggota");
         <div id="menu" class="col-md-1 text-center"><a href="peminjaman.php">Peminjaman</a></div>
         <div class="col-md-1"></div>
     </div>
+    <!-- tabel -->
     <div id="container2" class="container">
         <div class="col-md-12">
             <h4>Data Keanggotaan Perpustakaan</h4>
@@ -81,28 +82,28 @@ $query = mysqli_query($connection, "SELECT * FROM anggota");
                 </tr>
                     <?php
                     $no = 1;
-                    while($anggota = mysqli_fetch_array($query)){ 
+                    while($member = mysqli_fetch_array($members)){ 
                         if ($no % 2 == 0) { ?>
                             <tr style="background-color: lightgrey;">
-                                <td style="text-align: center;"><?php echo $no ?></td>
-                                <td><?php echo $anggota["nama"] ?></td>
-                                <td style="text-align: center;"><?php echo $anggota["sex"] ?></td>
-                                <td><?php echo $anggota["telp"] ?></td>
-                                <td><?php echo $anggota["alamat"] ?></td>
-                                <td><?php echo $anggota["email"] ?></td>
-                                <td><?php echo $anggota["tgl_entry"] ?></td>
-                                <td style="text-align: center;"><?php echo $anggota["role"] ?></td>
+                                <td><?php echo $no ?></td>
+                                <td><?php echo $member["nama"] ?></td>
+                                <td><?php echo $member["sex"] ?></td>
+                                <td><?php echo $member["telp"] ?></td>
+                                <td><?php echo $member["alamat"] ?></td>
+                                <td><?php echo $member["email"] ?></td>
+                                <td><?php echo date("d F Y",strtotime($member["tgl_entry"]))?></td>
+                                <td><?php echo $member["role"] ?></td>
                             </tr>
                         <?php } else {?>
                             <tr style="background-color: white;">
-                                <td style="text-align: center;"><?php echo $no ?></td>
-                                <td><?php echo $anggota["nama"] ?></td>
-                                <td style="text-align: center;"><?php echo $anggota["sex"] ?></td>
-                                <td><?php echo $anggota["telp"] ?></td>
-                                <td><?php echo $anggota["alamat"] ?></td>
-                                <td><?php echo $anggota["email"] ?></td>
-                                <td><?php echo $anggota["tgl_entry"] ?></td>
-                                <td style="text-align: center;"><?php echo $anggota["role"] ?></td>
+                                <td><?php echo $no ?></td>
+                                <td><?php echo $member["nama"] ?></td>
+                                <td><?php echo $member["sex"] ?></td>
+                                <td><?php echo $member["telp"] ?></td>
+                                <td><?php echo $member["alamat"] ?></td>
+                                <td><?php echo $member["email"] ?></td>
+                                <td><?php echo date("d F Y",strtotime($member["tgl_entry"]))?></td>
+                                <td><?php echo $member["role"] ?></td>
                             </tr>
                             <?php } ?>
                     <?php $no++ ?>
