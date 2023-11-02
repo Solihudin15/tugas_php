@@ -1,15 +1,19 @@
 <?php
 include "config.php";
-$books = mysqli_query($connection, "SELECT * FROM buku");
+$Publishers = mysqli_query($connection, "SELECT * FROM penerbit");
 ?>
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Keanggotaan Perpustakaan</title>
+    <title>Data Penerbit Buku</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
+        #add {
+            margin-left: 200;
+            text-decoration: none;
+        }
         #navbar{
             display: flex;
             background-color: skyblue;
@@ -61,52 +65,44 @@ $books = mysqli_query($connection, "SELECT * FROM buku");
         <div class="col-md-1"></div>
         <div id="logo" class="col-md-7"><a href="index.php">Perpustakaan<span>Kita</span></a></div>
         <div id="menu" class="col-md-1 text-center"><a href="index.php">Anggota</a></div>
-        <div id="menu" class="col-md-1 text-center"><a href="buku.php">Buku</a></div>
-        <div id="menu" class="col-md-1 text-center"><a href="peminjaman.php">Peminjaman</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="penerbit.php">Penerbit</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="pengarang.php">Pengarang</a></div>
         <div class="col-md-1"></div>
     </div>
     <!-- tabel -->
     <div id="container2" class="container">
         <div class="col-md-12">
-            <h4>Data Buku Perpustakaan</h4>
+            <h4>Data Penerbit Buku</h4>
+            <a href="tambah_penerbit.php" id="add">Tambah Data</a>
             <table align="center">
                 <tr style="background-color: cyan;">
                     <td style="text-align: center; font-weight: 700;">No.</td>
-                    <td style="text-align: center; font-weight: 700;">Isbn</td>
-                    <td style="text-align: center; font-weight: 700;">Judul</td>
-                    <td style="text-align: center; font-weight: 700;">Tahun</td>
                     <td style="text-align: center; font-weight: 700;">ID Penerbit</td>
-                    <td style="text-align: center; font-weight: 700;">ID Pengarang</td>
-                    <td style="text-align: center; font-weight: 700;">ID Katalog</td>
-                    <td style="text-align: center; font-weight: 700;">Quantity</td>
-                    <td style="text-align: center; font-weight: 700;">Harga</td>
+                    <td style="text-align: center; font-weight: 700;">Nama</td>
+                    <td style="text-align: center; font-weight: 700;">Email</td>
+                    <td style="text-align: center; font-weight: 700;">No.telpon</td>
+                    <td style="text-align: center; font-weight: 700;">Alamat</td>
                 </tr>
                     <?php
                     $no = 1;
-                    while($book = mysqli_fetch_array($books)){ 
+                    while($publiser = mysqli_fetch_array($Publishers)){ 
                         if ($no % 2 == 0) { ?>
                             <tr style="background-color: lightgrey;">
                                 <td><?php echo $no ?></td>
-                                <td><?php echo $book["isbn"] ?></td>
-                                <td><?php echo $book["judul"] ?></td>
-                                <td><?php echo $book["tahun"] ?></td>
-                                <td><?php echo $book["id_penerbit"] ?></td>
-                                <td><?php echo $book["id_pengarang"] ?></td>
-                                <td><?php echo $book["id_katalog"] ?></td>
-                                <td><?php echo $book["qty_stok"] ?></td>
-                                <td><?php echo number_format($book["harga_pinjam"])?></td>
+                                <td><?php echo $publiser["id_penerbit"] ?></td>
+                                <td><?php echo $publiser["nama_penerbit"] ?></td>
+                                <td><?php echo $publiser["email"] ?></td>
+                                <td><?php echo $publiser["telp"] ?></td>
+                                <td><?php echo $publiser["alamat"] ?></td>
                             </tr>
                         <?php } else {?>
                             <tr style="background-color: white;">
                                 <td><?php echo $no ?></td>
-                                <td><?php echo $book["isbn"] ?></td>
-                                <td><?php echo $book["judul"] ?></td>
-                                <td><?php echo $book["tahun"] ?></td>
-                                <td><?php echo $book["id_penerbit"] ?></td>
-                                <td><?php echo $book["id_pengarang"] ?></td>
-                                <td><?php echo $book["id_katalog"] ?></td>
-                                <td><?php echo $book["qty_stok"] ?></td>
-                                <td><?php echo number_format($book["harga_pinjam"])?></td>
+                                <td><?php echo $publiser["id_penerbit"] ?></td>
+                                <td><?php echo $publiser["nama_penerbit"] ?></td>
+                                <td><?php echo $publiser["email"] ?></td>
+                                <td><?php echo $publiser["telp"] ?></td>
+                                <td><?php echo $publiser["alamat"] ?></td>
                             </tr>
                             <?php } ?>
                     <?php $no++ ?>

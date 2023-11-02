@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-$rentals = mysqli_query($connection, "SELECT * FROM peminjaman JOIN anggota ON peminjaman.id_anggota = anggota.id_anggota");
+$authors = mysqli_query($connection, "SELECT * FROM pengarang");
 ?>
 
 <html lang="en">
@@ -10,6 +10,10 @@ $rentals = mysqli_query($connection, "SELECT * FROM peminjaman JOIN anggota ON p
     <title>Data Keanggotaan Perpustakaan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
+        #add {
+            text-decoration: none;
+            margin-left: 210;
+        }
         #navbar{
             display: flex;
             background-color: skyblue;
@@ -61,40 +65,44 @@ $rentals = mysqli_query($connection, "SELECT * FROM peminjaman JOIN anggota ON p
         <div class="col-md-1"></div>
         <div id="logo" class="col-md-7"><a href="index.php">Perpustakaan<span>Kita</span></a></div>
         <div id="menu" class="col-md-1 text-center"><a href="index.php">Anggota</a></div>
-        <div id="menu" class="col-md-1 text-center"><a href="buku.php">Buku</a></div>
-        <div id="menu" class="col-md-1 text-center"><a href="peminjaman.php">Peminjaman</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="penerbit.php">Penerbit</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="pengarang.php">Pengarang</a></div>
         <div class="col-md-1"></div>
     </div>
     <!-- tabel -->
     <div id="container2" class="container">
         <div class="col-md-12">
-            <h4>Data Peminjaman Perpustakaan</h4>
+            <h4>Data Pengarang Buku</h4>
+            <a href="tambah_pengarang.php" id="add">Tambah Data</a>
             <table align="center">
                 <tr style="background-color: cyan;">
                     <td style="text-align: center; font-weight: 700;">No.</td>
-                    <td style="text-align: center; font-weight: 700;">ID Pinjam</td>
+                    <td style="text-align: center; font-weight: 700;">ID Pengarang</td>
                     <td style="text-align: center; font-weight: 700;">Nama</td>
-                    <td style="text-align: center; font-weight: 700;">Tanggal Pinjam</td>
-                    <td style="text-align: center; font-weight: 700;">Tanggal Kembali</td>
+                    <td style="text-align: center; font-weight: 700;">Email</td>
+                    <td style="text-align: center; font-weight: 700;">No.telpon</td>
+                    <td style="text-align: center; font-weight: 700;">Alamat</td>
                 </tr>
                     <?php
                     $no = 1;
-                    while($rental = mysqli_fetch_array($rentals)){ 
+                    while($author = mysqli_fetch_array($authors)){ 
                         if ($no % 2 == 0) { ?>
                             <tr style="background-color: lightgrey;">
                                 <td><?php echo $no ?></td>
-                                <td><?php echo $rental["id_pinjam"]?></td>
-                                <td><?php echo $rental["nama"]?></td>
-                                <td><?php echo date("d F Y",strtotime($rental["tgl_pinjam"]))?></td>
-                                <td><?php echo date("d F Y",strtotime($rental["tgl_kembali"]))?></td>
+                                <td><?php echo $author["id_pengarang"] ?></td>
+                                <td><?php echo $author["nama_pengarang"] ?></td>
+                                <td><?php echo $author["email"] ?></td>
+                                <td><?php echo $author["telp"] ?></td>
+                                <td><?php echo $author["alamat"] ?></td>
                             </tr>
                         <?php } else {?>
                             <tr style="background-color: white;">
                                 <td><?php echo $no ?></td>
-                                <td><?php echo $rental["id_pinjam"] ?></td>
-                                <td><?php echo $rental["nama"] ?></td>
-                                <td><?php echo date("d F Y",strtotime($rental["tgl_pinjam"]))?></td>
-                                <td><?php echo date("d F Y",strtotime($rental["tgl_kembali"]))?></td>
+                                <td><?php echo $author["id_pengarang"] ?></td>
+                                <td><?php echo $author["nama_pengarang"] ?></td>
+                                <td><?php echo $author["email"] ?></td>
+                                <td><?php echo $author["telp"] ?></td>
+                                <td><?php echo $author["alamat"] ?></td>
                             </tr>
                             <?php } ?>
                     <?php $no++ ?>

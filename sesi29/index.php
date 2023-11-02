@@ -7,9 +7,12 @@ $members = mysqli_query($connection, "SELECT * FROM anggota");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Keanggotaan Perpustakaan</title>
+    <title>Data Anggota Perpustakaan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
+        body a {
+            text-decoration: none;
+        }
         #navbar{
             display: flex;
             background-color: skyblue;
@@ -61,20 +64,23 @@ $members = mysqli_query($connection, "SELECT * FROM anggota");
         <div class="col-md-1"></div>
         <div id="logo" class="col-md-7"><a href="index.php">Perpustakaan<span>Kita</span></a></div>
         <div id="menu" class="col-md-1 text-center"><a href="index.php">Anggota</a></div>
-        <div id="menu" class="col-md-1 text-center"><a href="buku.php">Buku</a></div>
-        <div id="menu" class="col-md-1 text-center"><a href="peminjaman.php">Peminjaman</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="penerbit.php">Penerbit</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="pengarang.php">Pengarang</a></div>
         <div class="col-md-1"></div>
     </div>
     <!-- tabel -->
     <div id="container2" class="container">
         <div class="col-md-12">
-            <h4>Data Keanggotaan Perpustakaan</h4>
+            <h4>Data Anggota Perpustakaan</h4>
+            <a href="tambah_anggota.php" id="add">Tambah Data</a>
             <table align="center">
                 <tr style="background-color: cyan;">
                     <td style="text-align: center; font-weight: 700;">No.</td>
                     <td style="text-align: center; font-weight: 700;">Nama</td>
+                    <td style="text-align: center; font-weight: 700;">Username</td>
+                    <td style="text-align: center; font-weight: 700;">Password</td>
                     <td style="text-align: center; font-weight: 700;">Jenis Kelamin</td>
-                    <td style="text-align: center; font-weight: 700;">No.Telp</td>
+                    <td style="text-align: center; font-weight: 700;">No.Telpon</td>
                     <td style="text-align: center; font-weight: 700;">Alamat</td>
                     <td style="text-align: center; font-weight: 700;">Email</td>
                     <td style="text-align: center; font-weight: 700;">Terdaftar Sejak</td>
@@ -87,6 +93,8 @@ $members = mysqli_query($connection, "SELECT * FROM anggota");
                             <tr style="background-color: lightgrey;">
                                 <td><?php echo $no ?></td>
                                 <td><?php echo $member["nama"] ?></td>
+                                <td><?php echo $member["username"] ?></td>
+                                <td><?php echo $member["password"] ?></td>
                                 <td><?php echo $member["sex"] ?></td>
                                 <td><?php echo $member["telp"] ?></td>
                                 <td><?php echo $member["alamat"] ?></td>
@@ -98,6 +106,8 @@ $members = mysqli_query($connection, "SELECT * FROM anggota");
                             <tr style="background-color: white;">
                                 <td><?php echo $no ?></td>
                                 <td><?php echo $member["nama"] ?></td>
+                                <td><?php echo $member["username"] ?></td>
+                                <td><?php echo $member["password"] ?></td>
                                 <td><?php echo $member["sex"] ?></td>
                                 <td><?php echo $member["telp"] ?></td>
                                 <td><?php echo $member["alamat"] ?></td>
