@@ -9,55 +9,7 @@ $Publishers = mysqli_query($connection, "SELECT * FROM penerbit");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Penerbit Buku</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        #add {
-            margin-left: 200;
-            text-decoration: none;
-        }
-        #navbar{
-            display: flex;
-            background-color: skyblue;
-            padding: 7px;
-            margin-bottom: 10px;
-        }
-        #navbar a{
-            text-decoration: none;
-        }
-        #logo{
-            font-weight: 700;
-            font-size: 30px;
-        }
-        #logo a{
-            color: red;
-        }
-        #logo a span{
-            color: white;
-        }
-        #menu {
-            margin-top: 10px;
-            font-weight: 500;
-            font-size: 18px;
-        }
-        #menu a{
-            color: white;
-        }
-        h4 {
-            text-align: center;
-            padding-top: 10px;
-            padding-left: 20px;
-        }
-        table{
-            border: 2px solid black;
-            border-collapse: collapse;
-            margin-bottom: 50px;
-        }
-        tr, td{
-            text-align: center;
-            border: 2px solid black;
-            border-collapse: collapse;
-            padding: 7px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -70,45 +22,50 @@ $Publishers = mysqli_query($connection, "SELECT * FROM penerbit");
         <div class="col-md-1"></div>
     </div>
     <!-- tabel -->
-    <div id="container2" class="container">
-        <div class="col-md-12">
-            <h4>Data Penerbit Buku</h4>
-            <a href="tambah_penerbit.php" id="add">Tambah Data</a>
-            <table align="center">
-                <tr style="background-color: cyan;">
-                    <td style="text-align: center; font-weight: 700;">No.</td>
-                    <td style="text-align: center; font-weight: 700;">ID Penerbit</td>
-                    <td style="text-align: center; font-weight: 700;">Nama</td>
-                    <td style="text-align: center; font-weight: 700;">Email</td>
-                    <td style="text-align: center; font-weight: 700;">No.telpon</td>
-                    <td style="text-align: center; font-weight: 700;">Alamat</td>
-                </tr>
-                    <?php
-                    $no = 1;
-                    while($publiser = mysqli_fetch_array($Publishers)){ 
-                        if ($no % 2 == 0) { ?>
-                            <tr style="background-color: lightgrey;">
-                                <td><?php echo $no ?></td>
-                                <td><?php echo $publiser["id_penerbit"] ?></td>
-                                <td><?php echo $publiser["nama_penerbit"] ?></td>
-                                <td><?php echo $publiser["email"] ?></td>
-                                <td><?php echo $publiser["telp"] ?></td>
-                                <td><?php echo $publiser["alamat"] ?></td>
-                            </tr>
-                        <?php } else {?>
-                            <tr style="background-color: white;">
-                                <td><?php echo $no ?></td>
-                                <td><?php echo $publiser["id_penerbit"] ?></td>
-                                <td><?php echo $publiser["nama_penerbit"] ?></td>
-                                <td><?php echo $publiser["email"] ?></td>
-                                <td><?php echo $publiser["telp"] ?></td>
-                                <td><?php echo $publiser["alamat"] ?></td>
-                            </tr>
-                            <?php } ?>
-                    <?php $no++ ?>
+    <h4>Data Penerbit Buku</h4>
+    <a class="btn btn-primary btn-sm mb-2" href="tambah_penerbit.php" style="margin-left: 275;">Tambah Data</a>
+        <table align="center">
+            <tr style="background-color: skyblue;">
+                <td style="text-align: center; font-weight: 700;">No.</td>
+                <td style="text-align: center; font-weight: 700;">ID Penerbit</td>
+                <td style="text-align: center; font-weight: 700;">Nama</td>
+                <td style="text-align: center; font-weight: 700;">Email</td>
+                <td style="text-align: center; font-weight: 700;">No.telpon</td>
+                <td style="text-align: center; font-weight: 700;">Alamat</td>
+                <td style="text-align: center; font-weight: 700;">Aksi</td>
+            </tr>
+                <?php
+                $no = 1;
+                while($publiser = mysqli_fetch_array($Publishers)){ 
+                    if ($no % 2 == 0) { ?>
+                        <tr style="background-color: lightgrey;">
+                            <td><?php echo $no ?></td>
+                            <td><?php echo $publiser["id_penerbit"] ?></td>
+                            <td><?php echo $publiser["nama_penerbit"] ?></td>
+                            <td><?php echo $publiser["email"] ?></td>
+                            <td><?php echo $publiser["telp"] ?></td>
+                            <td><?php echo $publiser["alamat"] ?></td>
+                            <td>
+                                <a href="edit_penerbit.php?id=<?php echo $publiser["id_penerbit"]?>" class="btn btn-success btn-sm">Edit</a>
+                                <a href="delete_penerbit.php?id=<?php echo $publiser["id_penerbit"]?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } else {?>
+                        <tr style="background-color: white;">
+                            <td><?php echo $no ?></td>
+                            <td><?php echo $publiser["id_penerbit"] ?></td>
+                            <td><?php echo $publiser["nama_penerbit"] ?></td>
+                            <td><?php echo $publiser["email"] ?></td>
+                            <td><?php echo $publiser["telp"] ?></td>
+                            <td><?php echo $publiser["alamat"] ?></td>
+                            <td>
+                                <a href="edit_penerbit.php?id=<?php echo $publiser["id_penerbit"]?>" class="btn btn-success btn-sm">Edit</a>
+                                <a href="delete_penerbit.php?id=<?php echo $publiser["id_penerbit"]?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                            </td>
+                        </tr>
                     <?php } ?>
-                </table>
-        </div>
-    </div>
+                <?php $no++ ?>
+                <?php } ?>
+        </table>
 </body>
 </html>
