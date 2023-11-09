@@ -2,8 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Keanggotaan</title>
+    <title>Edit Data Keanggotaan</title>
+    <!-- CDN Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- CDN JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styleku.css">
 </head>
 <?php
     include "config.php";
@@ -24,16 +29,26 @@
     }
 ?>
 <body>
+    <!-- Navbar -->
+    <div id="navbar" style="display: flex;">
+        <div class="col-md-1"></div>
+        <div id="logo" class="col-md-7"><a href="index.php">Perpustakaan<span>Kita</span></a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="index.php">Anggota</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="penerbit.php">Penerbit</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="pengarang.php">Pengarang</a></div>
+        <div class="col-md-1"></div>
+    </div>
+    <!-- Form -->
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="mt-4">Edit Data Keanggotaan</h3>
+                <h3 class="mt-2 mb-2">Edit Data Keanggotaan</h3>
                 <form action="backend/proses_edit_anggota.php?id=<?php echo $id;?>" method="post">
                     <table class="table">
                         <tr>
                             <td>
                                 Nama
-                            </td>
+                        </td>
                             <td>
                                 <input type="text" name="nama" class="form-control" value="<?php echo $nama; ?>">
                             </td>
@@ -51,7 +66,8 @@
                                 Password
                             </td>
                             <td>
-                                <input type="text" name="password" class="form-control" value="<?php echo $password_anggota; ?>">
+                                <input type="password" id="pass" name="password" class="form-control" value="<?php echo $password_anggota; ?>">
+                                <input type="checkbox" class="form-checkbox"> Show password
                             </td>
                         </tr>
                         <tr>
@@ -102,7 +118,7 @@
                                 Alamat
                             </td>
                             <td>
-                                <textarea class="form-control" name="alamat" rows="5"><?php echo $alamat; ?></textarea>
+                                <textarea class="form-control" name="alamat" rows="3"><?php echo $alamat; ?></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -158,7 +174,6 @@
                         </tr>
                         <tr>
                             <td>
-                                
                             </td>
                             <td>
                                 <input type="submit" name="submit" class="btn btn-primary">
@@ -171,3 +186,15 @@
     </div>
 </body>
 </html>
+
+<script> 
+$(document).ready(function(){		
+		$('.form-checkbox').click(function(){
+			if($(this).is(':checked')){
+				$('#pass').attr('type','text');
+			}else{
+				$('#pass').attr('type','password');
+			}
+		});
+	});
+</script>

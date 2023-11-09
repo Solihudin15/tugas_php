@@ -7,9 +7,16 @@ $authors = mysqli_query($connection, "SELECT * FROM pengarang");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Keanggotaan Perpustakaan</title>
+    <title>Data Anggota Perpustakaan</title>
+    <!-- CDN Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CDN JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- CDN Data Tables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styleku.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -21,51 +28,63 @@ $authors = mysqli_query($connection, "SELECT * FROM pengarang");
         <div id="menu" class="col-md-1 text-center"><a href="pengarang.php">Pengarang</a></div>
         <div class="col-md-1"></div>
     </div>
-    <!-- tabel -->
-    <h4>Data Pengarang Buku</h4>
-    <a class="btn btn-primary btn-sm mb-2" href="tambah_pengarang.php" style="margin-left: 270;">Tambah Data</a>
-        <table align="center">
-            <tr style="background-color: skyblue;">
-                <td style="text-align: center; font-weight: 700;">No.</td>
-                <td style="text-align: center; font-weight: 700;">ID Pengarang</td>
-                <td style="text-align: center; font-weight: 700;">Nama</td>
-                <td style="text-align: center; font-weight: 700;">Email</td>
-                <td style="text-align: center; font-weight: 700;">No.telpon</td>
-                <td style="text-align: center; font-weight: 700;">Alamat</td>
-                <td style="text-align: center; font-weight: 700;">Aksi</td>
-            </tr>
-                <?php
-                $no = 1;
-                while($author = mysqli_fetch_array($authors)){ 
-                    if ($no % 2 == 0) { ?>
-                        <tr style="background-color: lightgrey;">
-                            <td><?php echo $no ?></td>
-                            <td><?php echo $author["id_pengarang"] ?></td>
-                            <td><?php echo $author["nama_pengarang"] ?></td>
-                            <td><?php echo $author["email"] ?></td>
-                            <td><?php echo $author["telp"] ?></td>
-                            <td><?php echo $author["alamat"] ?></td>
-                            <td>
-                                <a href="edit_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-success btn-sm">Edit</a>
-                                <a href="delete_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-                            </td>
-                        </tr>
-                    <?php } else {?>
-                        <tr style="background-color: white;">
-                            <td><?php echo $no ?></td>
-                            <td><?php echo $author["id_pengarang"] ?></td>
-                            <td><?php echo $author["nama_pengarang"] ?></td>
-                            <td><?php echo $author["email"] ?></td>
-                            <td><?php echo $author["telp"] ?></td>
-                            <td><?php echo $author["alamat"] ?></td>
-                            <td>
-                                <a href="edit_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-success btn-sm">Edit</a>
-                                <a href="delete_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-                            </td>
-                        </tr>
+    <h4 class="text-center">Data Pengarang Buku</h4>
+    <!-- Tabel -->
+    <div class="container-fluid mb-2">
+        <a class="btn btn-primary btn-sm mb-2" href="tambah_pengarang.php">Tambah Data</a>
+            <table id="myTable" class="display">
+                <thead>
+                    <tr>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">ID Pengarang</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">No.telpon</th>
+                        <th class="text-center">Alamat</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    while($author = mysqli_fetch_array($authors)){ 
+                        if ($no % 2 == 0) { ?>
+                            <tr class="text-center">
+                                <td><?php echo $no ?></td>
+                                <td><?php echo $author["id_pengarang"] ?></td>
+                                <td><?php echo $author["nama_pengarang"] ?></td>
+                                <td><?php echo $author["email"] ?></td>
+                                <td><?php echo $author["telp"] ?></td>
+                                <td><?php echo $author["alamat"] ?></td>
+                                <td>
+                                    <a href="edit_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="delete_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-danger btn-sm ms-1" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                </td>
+                            </tr>
+                        <?php } else {?>
+                            <tr class="text-center">
+                                <td><?php echo $no ?></td>
+                                <td><?php echo $author["id_pengarang"] ?></td>
+                                <td><?php echo $author["nama_pengarang"] ?></td>
+                                <td><?php echo $author["email"] ?></td>
+                                <td><?php echo $author["telp"] ?></td>
+                                <td><?php echo $author["alamat"] ?></td>
+                                <td>
+                                    <a href="edit_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="delete_pengarang.php?id=<?php echo $author["id_pengarang"]?>" class="btn btn-danger btn-sm ms-1" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    <?php $no++ ?>
                     <?php } ?>
-                <?php $no++ ?>
-                <?php } ?>
-        </table>
+                </tbody>
+            </table>
+    </div>
 </body>
 </html>
+<!-- Data Tables -->
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

@@ -3,13 +3,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Penerbit</title>
+    <!-- CDN Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- CDN JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styleku.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <div id="navbar" style="display: flex;">
+        <div class="col-md-1"></div>
+        <div id="logo" class="col-md-7"><a href="index.php">Perpustakaan<span>Kita</span></a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="index.php">Anggota</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="penerbit.php">Penerbit</a></div>
+        <div id="menu" class="col-md-1 text-center"><a href="pengarang.php">Pengarang</a></div>
+        <div class="col-md-1"></div>
+    </div>
+    <!-- Form -->
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="mt-4">Tambah Data Penerbit</h3>
+                <h3 class="mt-2 mb-2">Tambah Data Penerbit</h3>
                 <form action="backend/proses_tambah_penerbit.php" method="post">
                     <table class="table">
                         <tr>
@@ -49,7 +64,7 @@
                                 Alamat
                             </td>
                             <td>
-                                <textarea class="form-control" name="alamat" rows="5"></textarea>
+                                <textarea class="form-control" name="alamat" rows="3"></textarea>
                             </td>
                         </tr>
                         <tr>
