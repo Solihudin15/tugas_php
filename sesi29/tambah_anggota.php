@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/styleku.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <div id="navbar" style="display: flex;">
@@ -135,16 +137,17 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
-$(document).ready(function(){		
-		$('.form-checkbox').click(function(){
-			if($(this).is(':checked')){
-				$('#pass').attr('type','text');
-			}else{
-				$('#pass').attr('type','password');
-			}
-		});
-	});
+    $(document).ready(function() {
+        $('.form-checkbox').click(function() {
+            if ($(this).is(':checked')) {
+                $('#pass').attr('type', 'text');
+            } else {
+                $('#pass').attr('type', 'password');
+            }
+        });
+    });
 </script>
